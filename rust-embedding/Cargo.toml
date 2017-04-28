@@ -1,0 +1,9 @@
+[package]
+name = "ccr"
+version = "0.1.0"
+authors = ["Hidehito Yabuuchi <hdht.ybuc@gmail.com>"]
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
