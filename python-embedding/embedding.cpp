@@ -1,5 +1,6 @@
-#include <iostream>
 // #include <cstdlib>
+#include <iostream>
+#include <exception>
 #include <boost/python.hpp>
 
 int main()
@@ -52,6 +53,9 @@ f()
             cerr << "(C++) ZeroDivisionError" << endl;
         }
         PyErr_Print();
+        return 1;
+    } catch (const std::exception& e) {
+        cerr << e.what() << endl;
         return 1;
     }
 
