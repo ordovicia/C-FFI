@@ -1,16 +1,20 @@
-RS_SRCS=$(shell ls src/*)
-C_SRCS=$(shell ls *.c)
+RUST_SRCS=$(shell find src -name "*.rs")
+RUST_LIB=cpp_rust
+CXX_SRCS=$(shell ls *.cpp)
 PROG=main
 
-RS_BUILD=release
-CARGO_FLAGS=--$(RS_BUILD)
-CFLAGS=-std=c11 -Wall -Wextra -Wconversion
+RUST_BUILD=release
+CARGO_FLAGS=--$(RUST_BUILD)
+CXX=/usr/local/bin/g++-7
+CXX_FLAGS=-std=c++14 -Wall -Wextra -Wconversion
 
-main: $(RS_SRCS) $(C_SRCS)
+.PHONY: rust clean
+
+main: $(CXX_SRCS) rust
+	$(CXX) $(CXX_FLAGS) $(CXX_SRCS) target/$(RUST_BUILD)/lib$(RUST_LIB).dylib -o $(PROG)
+
+rust: $(RUST_SRCS)
 	cargo build $(CARGO_FLAGS)
-	gcc $(CFLAGS) $(C_SRCS) target/$(RS_BUILD)/libccr.dylib -o $(PROG)
-
-.PHONY: clean
 
 clean:
 	rm $(PROG)

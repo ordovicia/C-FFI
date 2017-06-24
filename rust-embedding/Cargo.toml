@@ -1,5 +1,5 @@
 [package]
-name = "ccr"
+name = "cpp_rust"
 version = "0.1.0"
 authors = ["Hidehito Yabuuchi <hdht.ybuc@gmail.com>"]
 
@@ -7,3 +7,4 @@ authors = ["Hidehito Yabuuchi <hdht.ybuc@gmail.com>"]
 crate-type = ["cdylib"]
 
 [dependencies]
+libc = ">= 0.2.24"
