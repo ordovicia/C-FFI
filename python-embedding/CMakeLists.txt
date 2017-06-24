@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
-find_package(PythonInterp)
-find_package(PythonLibs)
+find_package(PythonInterp REQUIRED)
+find_package(PythonLibs REQUIRED)
 
 message("Python version:\n\tpython${PYTHON_VERSION_MAJOR}")
 if(APPLE AND ${PYTHON_VERSION_MAJOR} EQUAL 3)
@@ -18,4 +18,5 @@ file(GLOB PY_SOURCES ${CMAKE_CURRENT_LIST_DIR}/*.py)
 
 add_executable(embedding ${CPP_SOURCES})
 target_link_libraries(embedding ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
+
 file(COPY ${PY_SOURCES} DESTINATION .)

@@ -1,1 +1,2 @@
-print("Hello {}.".format(s, ))
+ppp = "po " + p
+print("(Python) ppp = " + ppp)
