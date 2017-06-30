@@ -13,10 +13,7 @@ endif()
 include_directories(${Boost_INCLUDE_DIRS} ${PYTHON_INCLUDE_DIRS})
 # link_libraries(${boost_LIBRARIES} ${PYTHON_LIBRARIES})
 
-file(GLOB CPP_SOURCES ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
-file(GLOB PY_SOURCES ${CMAKE_CURRENT_LIST_DIR}/*.py)
+add_executable(call_python call_python.cpp)
+target_link_libraries(call_python ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 
-add_executable(embedding ${CPP_SOURCES})
-target_link_libraries(embedding ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
-
-file(COPY ${PY_SOURCES} DESTINATION .)
+file(COPY call_python.py DESTINATION .)

@@ -1,5 +1,5 @@
 RUST_SRCS=$(shell find src -name "*.rs")
-RUST_LIB=cpp_rust
+RUST_LIB=cpp_call_rust
 CXX_SRCS=$(shell ls *.cpp)
 PROG=main
 
