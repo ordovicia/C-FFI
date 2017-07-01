@@ -18,10 +18,28 @@ public:
 
     int getWeight() const { return m_weight; }
 
+    Person& operator+=(int age)
+    {
+        this->age += age;
+        return *this;
+    }
+
+    Person& operator-=(int age) { return (*this += -age); }
+
+    using iterator = std::string::const_iterator;
+    auto begin() { return name.begin(); }
+    auto end() { return name.end(); }
+
 private:
     int m_height = 0;
     int m_weight = 50;
 };
+
+Person& operator+(int age, Person& p)
+{
+    p += age;
+    return p;
+}
 
 std::ostream& operator<<(std::ostream& os, Person p)
 {
@@ -41,5 +59,9 @@ BOOST_PYTHON_MODULE(cls)
         .def("grow", &Person::grow)
         .add_property("height", &Person::getHeight, &Person::setHeight)
         .add_property("weight", &Person::getWeight)
-        .def(self_ns::str(self_ns::self));
+        .def(self += int())
+        .def(self -= int())
+        .def(int() + self)
+        .def(self_ns::str(self_ns::self))
+        .def("name_string", iterator<Person>());
 }

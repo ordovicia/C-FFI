@@ -28,6 +28,11 @@ double sub(double x, double y)
     return x - y;
 }
 
+double my_div(double dividend, double divisor)
+{
+    return dividend / divisor;
+}
+
 #include <boost/python.hpp>
 using namespace boost::python;
 
@@ -44,4 +49,5 @@ BOOST_PYTHON_MODULE(fn)
     def("sub", (int (*)(int, int))0, sub_overloads());
     def("sub", sub_double_1);
     def("sub", sub_double_2);
+    def("div", my_div, (arg("dividend"), "divisor"));
 }

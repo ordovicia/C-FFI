@@ -14,4 +14,8 @@ assert(fn.sub(3, 4) == -1)
 assert(fn.sub(1.0) == 1.0)
 assert(fn.sub(1.0, 2.0) == -1.0)
 
+assert(fn.div(3.0, 2.0) == 1.5)
+assert(fn.div(dividend=3.0, divisor=2.0) == 1.5)
+assert(fn.div(divisor=2.0, dividend=3.0) == 1.5)
+
 print("** test passed **")
