@@ -7,4 +7,4 @@
 
 %}
 
-int fact(int n);
+%include "example.hpp"
