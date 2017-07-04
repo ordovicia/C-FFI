@@ -40,20 +40,19 @@ f()
         cout << "Executed 'p = p + p'\n"
              << "(C++) p = \"" << p << "\"\n" << endl;
 
-        cout << "Executing 'embedding.py'" << endl;
-        bp::exec_file("embedding.py", py_main_namespace);
+        cout << "Executing 'call_python.py'" << endl;
+        bp::exec_file("call_python.py", py_main_namespace);
         std::string ppp = bp::extract<std::string>(py_main_namespace["ppp"]);
         cout << "(C++) ppp = \"" << ppp << "\"\n" << endl;
 
         cout << "Executing '1 / 0'" << endl;
-        bp::exec_file("embedding.py", py_main_namespace);
+        bp::exec_file("call_python.py", py_main_namespace);
         bp::exec("1 / 0");
     } catch (const bp::error_already_set& e) {
         if (PyErr_ExceptionMatches(PyExc_ZeroDivisionError)) {
             cerr << "(C++) ZeroDivisionError" << endl;
         }
         PyErr_Print();
-        return 1;
     } catch (const std::exception& e) {
         cerr << e.what() << endl;
         return 1;
