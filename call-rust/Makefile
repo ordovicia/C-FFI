@@ -10,7 +10,7 @@ CXX_FLAGS=-std=c++14 -Wall -Wextra -Wconversion
 
 .PHONY: rust clean
 
-main: $(CXX_SRCS) rust
+$(PROG): $(CXX_SRCS) rust
 	$(CXX) $(CXX_FLAGS) $(CXX_SRCS) target/$(RUST_BUILD)/lib$(RUST_LIB).dylib -o $(PROG)
 
 rust: $(RUST_SRCS)
