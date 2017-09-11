@@ -3,8 +3,8 @@ RUST_LIB=cpp_call_rust
 CXX_SRCS=$(shell ls *.cpp)
 PROG=main
 
-RUST_BUILD=release
-CARGO_FLAGS=--$(RUST_BUILD)
+RUST_BUILD=debug
+CARGO_FLAGS=
 CXX=/usr/local/bin/g++-7
 CXX_FLAGS=-std=c++14 -Wall -Wextra -Wconversion
 
