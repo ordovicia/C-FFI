@@ -33,14 +33,12 @@ pub struct DivMod {
 }
 
 #[no_mangle]
-pub extern "C" fn divmod_impl(x: int32_t, y: int32_t, divmod: *mut DivMod) {
-    let (div, mod_) = match y {
-        0 => (0, 0),
-        _ => (x / y, x % y),
-    };
-
-    unsafe {
-        (*divmod).div = div;
-        (*divmod).mod_ = mod_;
+pub extern "C" fn divmod(x: int32_t, y: int32_t) -> DivMod {
+    match y {
+        0 => DivMod { div: 0, mod_: 0 },
+        _ => DivMod {
+            div: x / y,
+            mod_: x % y,
+        },
     }
 }

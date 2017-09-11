@@ -4,6 +4,7 @@
 extern "C" {
 
 int32_t mult2(int32_t x);
+
 ssize_t find_substr(const char* haystack, const char* needle);
 
 struct DivMod {
@@ -11,14 +12,7 @@ struct DivMod {
     int32_t mod;
 };
 
-void divmod_impl(int32_t x, int32_t y, DivMod* dm);
-
-DivMod divmod(int32_t x, int32_t y)
-{
-    DivMod dm;
-    divmod_impl(x, y, &dm);
-    return dm;
-}
+DivMod divmod(int32_t x, int32_t y);
 
 }  // extern "C"
 
