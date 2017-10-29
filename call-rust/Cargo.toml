@@ -1,10 +1,10 @@
 [package]
+authors = ["Hidehito Yabuuchi <hdht.ybuc@gmail.com>"]
 name = "cpp_call_rust"
 version = "0.1.0"
-authors = ["Hidehito Yabuuchi <hdht.ybuc@gmail.com>"]
+
+[dependencies]
+libc = "0.2.33"
 
 [lib]
 crate-type = ["cdylib"]
-
-[dependencies]
-libc = "0.2.30"
