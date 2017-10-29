@@ -1,3 +1,4 @@
+#include <cassert>
 #include <cstdint>
 #include <iostream>
 
@@ -21,31 +22,30 @@ int main(void)
     using namespace std;
 
     cout << "# mult2()" << endl;
-    for (int x = 0; x < 10; x++)
-        cout << x << " * 2 = " << mult2(x) << endl;
+    for (int x = 0; x < 10; x++) {
+        cout << x << " * 2 = " << mult2(x) << '\n';
+        assert(x * 2 == mult2(x));
+    }
+    cout << endl;
 
     cout << "# find_substr()" << endl;
     const char* haystack = "po-he";
     const char* needle = "-";
     auto p = find_substr(haystack, needle);
-    if (p > 0) {
-        cout << p << ", " << (haystack + p) << endl;
-    } else {
-        cout << "not found" << endl;
-    }
+    assert(p == 2);
+    cout << p << ", " << (haystack + p) << '\n'
+         << endl;
 
-    cout << "# divmod()" << endl;
+    cout << "# divmod()" << '\n';
     for (int32_t x = 4; x <= 8; x++) {
         for (int32_t y = 1; y <= 4; y++) {
             auto dm = divmod(x, y);
-            if (x != y * dm.div + dm.mod) {
-                cout << "*** divmod() not works" << endl;
-            } else {
-                cout << x << " = " << y << " * " << dm.div << " + " << dm.mod
-                     << endl;
-            }
+            assert(x == y * dm.div + dm.mod);
+            cout << x << " = "
+                 << y << " * " << dm.div << " + " << dm.mod << '\n';
         }
     }
+    cout << endl;
 
     return 0;
 }
